@@ -7,6 +7,21 @@ Authors: Fiona Zou, Ruofei Mao
 
 
 ## Introduction
+For the project, we will be using the a subset of recipes and ratings dataset from food.com. First, we will load in the two datasets and explore their features. 
+The dataframe raw_recipes contains 83782 rows(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe) and 12 columns (features) describing recipes. Specifically, the columns are:
+
+1. name(object/string)- recipes' names stored as text data;
+2. id(int)- numerical representation of recipe id;
+3. minutes(int)- number of minutes to prepare the recipe;
+4. contributor_id(int)- users' id who posted the recipe;
+5. submitted(object/date) - date the recipe was submitted;
+6. tags(object) - a list of strings representing tags for the recipe;
+7. nutrition(object) - 7 nutrition information of the recipe, including #calories, total fat, sugar, sodium, protein, saturated fat, carbohydrates in order of appearance;
+8. n_steps(int) -number of steps in recipe;
+9. steps(objects) - in-order text data for recipe steps;
+10. description(object) -user descriptions of their recipe;
+11. ingredients(object) -list of strings each representing a needed ingredient of recipe;
+12. n_ingredients(int) -total number of recipe ingredients.
 
 
 ## Data Cleaning and Exploratory Data Analysis
