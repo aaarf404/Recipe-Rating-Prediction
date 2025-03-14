@@ -46,10 +46,43 @@ To evaluate model performance, overall accuracy and F1-score for each rating cat
 
 For our baseline model, we are utilizing a decision tree classifier and split the data points into training and test sets. The model included **seven quantitative features**: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, and carbohydrates PDV. Since all features were numerical, no nominal variables required one-hot encoding. To ensure a more stable and accurate model, numerical features were standardized using StandardScaler() before training.
 
-The baseline model achieved an overall accuracy of 87.64%, but a closer look at the F1-scores revealed major shortcomings. The model performed well on High ratings (F1 = 0.93) but performed poorly on Medium (F1 = 0.02) and Low (F1 = 0.00). This means that while the model correctly classified most High ratings, it almost completely failed to distinguish Medium and Low ratings, likely because of severe class imbalance. As a result, while the accuracy appears high, the model is not useful for predicting lower-rated recipes, which limits its practical value.
+The baseline model achieved an **overall accuracy** of 87.64%, but a closer look at the **F1-scores** revealed major shortcomings. The model performed well on High ratings (F1 = 0.93) but performed poorly on Medium (F1 = 0.02) and Low (F1 = 0.00). This means that while the model correctly classified most High ratings, it almost completely failed to distinguish Medium and Low ratings, likely because of severe class imbalance. As a result, while the accuracy appears high, the model is not useful for predicting lower-rated recipes, which limits its practical value.
 
 
 ## Final Model
 
+For the final model, we use seven numerical features, unchanged from our baseline model, that are likely to impact predicted rating: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, and carbohydrates PDV. These features were chosen because they reflect healthiness, dietary preferences, and perceived recipe quality, which can all affect user satisfaction.
+
+- "calories"
+
+Users may favor recipes with a certain calorie range. Low-calorie recipes might be preferred by health-conscious individuals, while high-calorie recipes could be rated higher if they are perceived as more indulgent.
+
+- "total_fat_PDV"
+
+Fat content contributes to flavor and texture. Recipes with too little fat might be seen as bland, while excessive fat may lead to lower ratings from health-conscious users.
+
+- "sugar_PDV"
+
+Sweetness can enhance appeal, but excessive sugar might lead to lower ratings due to health concerns. This is particularly relevant for desserts vs. savory dishes.
+
+- "sodium_PDV"
+
+Saltiness can influence taste perception. While some sodium is essential for flavor, overly salty dishes may receive lower ratings.
+
+- "protein PDV"
+
+High-protein recipes may appeal to athletes and health-conscious users. Low-protein dishes may be perceived as lacking substance, affecting ratings.
+
+- "saturated fat PDV"
+
+While saturated fat contributes to taste and texture, excessive amounts may lead to lower ratings due to health concerns.
+
+- "carbohydrates PDV"
+
+Carbs contribute to satiety and energy content. Some users might prefer low-carb meals, while others might rate carb-heavy dishes higher based on their preferences.
+
+For the final model, a **Random Forest Classifier** was used instead of a single decision tree. This change helped to reduce overfitting and improve generalization by averaging multiple decision trees trained on different subsets of the data. Additionally, **hyperparameter tuning** was performed using RandomizedSearchCV, optimizing key parameters such as number of trees (n_estimators), tree depth (max_depth), minimum samples required for splitting (min_samples_split), and minimum samples per leaf (min_samples_leaf). The final model was trained with 100 trees, a max depth of 20, min_samples_split=2, and min_samples_leaf=1, and it used class balancing (class_weight='balanced') to improve the classification of underrepresented classes.
+
+The final Random Forest model achieved an **overall accuracy** of 91.39%, an improvement of 3.75 percentage points over the baseline model. More importantly, the **F1-score improved significantly across all categories**, with High increasing to 0.95, Medium improving to 0.55, and Low reaching 0.42. This indicates that the model was much better at distinguishing between different rating levels, particularly for Medium and Low ratings, which were previously misclassified almost entirely. These improvements confirm that the additional features helped capture important aspects of recipe complexity, and that Random Forest’s ability to handle imbalanced data improved classification performance across all rating categories.
 
 ## Fairness Analysis
