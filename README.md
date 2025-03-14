@@ -3,28 +3,28 @@ Explore factors that could affect recipe rating, and predict ratings.
 
 Authors: Fiona Zou, Ruofei Mao
 
-##Overview
+## Overview
 
 
-##Introduction
+## Introduction
 
 
-##Data Cleaning and Exploratory Data Analysis
+## Data Cleaning and Exploratory Data Analysis
 
 
-##Assessment of Missingness
+## Assessment of Missingness
 
 
-##Hypothesis Testing
+## Hypothesis Testing
 
 
-##Framing a Prediction Problem
+## Framing a Prediction Problem
 
 
-##Baseline Model
+## Baseline Model
 
 
-##Final Model
+## Final Model
 
 
-##Fairness Analysis
+## Fairness Analysis
