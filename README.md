@@ -35,7 +35,7 @@ The dataframe raw_recipes contains 83782 rows(each representing a unique recipe 
 
 ## Framing a Prediction Problem
 
-We will train a **classification model** to predict **average ratings of recipes**. The baseline model used a Decision Tree Classifier with a depth limit of 5 to predict recipe ratings as High, Medium, or Low.  The target variable, rating_category, was ordinal and encoded as Low (0), Medium (1), and High (2). 
+We will train a **classification model** to predict **average ratings of recipes**. The baseline model used a Decision Tree Classifier with a depth limit of 5 to predict recipe ratings as High, Medium, or Low.  The target variable, rating_category, was **ordinal and encoded as Low (0), Medium (1), and High (2)**. 
 
 Since we want to predict the average rating of an recipe, we choose only features about the recipe's original qualities. Features we selected are the ones that are available at the “time of prediction”; that is, from the raw_recipe file. We choose average_rating as our response variable since it is a good indicator of the overall rating of a recipe. 
 
@@ -43,6 +43,10 @@ To evaluate model performance, overall accuracy and F1-score for each rating cat
 
 
 ## Baseline Model
+
+For our baseline model, we are utilizing a decision tree classifier and split the data points into training and test sets. The model included **seven quantitative features**: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, and carbohydrates PDV. Since all features were numerical, no nominal variables required one-hot encoding. To ensure a more stable and accurate model, numerical features were standardized using StandardScaler() before training.
+
+The baseline model achieved an overall accuracy of 87.64%, but a closer look at the F1-scores revealed major shortcomings. The model performed well on High ratings (F1 = 0.93) but performed poorly on Medium (F1 = 0.02) and Low (F1 = 0.00). This means that while the model correctly classified most High ratings, it almost completely failed to distinguish Medium and Low ratings, likely because of severe class imbalance. As a result, while the accuracy appears high, the model is not useful for predicting lower-rated recipes, which limits its practical value.
 
 
 ## Final Model
