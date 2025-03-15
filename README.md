@@ -66,13 +66,17 @@ To make the two dataframes better fit our topic of exploration, we did the follo
    * There are recipes that received multiple comments/ratings, recipes that only had a few, and recipes that had none. Hence, we only keep one row per each distinct recipe, `ratings` is dropped and we shall use their `avg_rating` for further exploration. And since we are only looking at recipe ratings and nutrients for now, identification columns `user_id` and `contributor_id` will be dropped as well.
 
 **First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
-|   recipe_id |   avg_rating |   calories |   total_fat |   sugar |   sodium |   protein |   sat_fat |   carbs |
-|------------:|-------------:|-----------:|------------:|--------:|---------:|----------:|----------:|--------:|
-|      275022 |            3 |      386.1 |          34 |       7 |       24 |        41 |        62 |       8 |
-|      275024 |            3 |      377.1 |          18 |     208 |       13 |        13 |        30 |      20 |
-|      275026 |            3 |      326.6 |          30 |      12 |       27 |        37 |        51 |       5 |
-|      275030 |            5 |      577.7 |          53 |     149 |       19 |        14 |        67 |      21 |
-|      275032 |            5 |      386.9 |           0 |     347 |        0 |         1 |         0 |      33 |
+
+```
+| recipe_id | avg_rating | calories | total_fat | sugar | sodium | protein | sat_fat | carbs |
+|-----------|-----------|----------|-----------|-------|--------|---------|---------|-------|
+| 275022    | 3         | 386.1    | 34        | 7     | 24     | 41      | 62      | 8     |
+| 275024    | 3         | 377.1    | 18        | 208   | 13     | 13      | 30      | 20    |
+| 275026    | 3         | 326.6    | 30        | 12    | 27     | 37      | 51      | 5     |
+| 275030    | 5         | 577.7    | 53        | 149   | 19     | 14      | 67      | 21    |
+| 275032    | 5         | 386.9    | 0         | 347   | 0      | 1       | 0       | 33    |
+```
+
 
 ### Exploratory Data Analysis
 ### Univariate
