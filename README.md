@@ -67,6 +67,7 @@ To make the two dataframes better fit our topic of exploration, we did the follo
 
 **First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
 
+<iframe src="recipes_table.html" width="100%" height="400px"></iframe>
 ```
 | recipe_id | avg_rating | calories | total_fat | sugar | sodium | protein | sat_fat | carbs |
 |-----------|-----------|----------|-----------|-------|--------|---------|---------|-------|
