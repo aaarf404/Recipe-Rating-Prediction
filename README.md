@@ -67,6 +67,7 @@ To make the two dataframes better fit our topic of exploration, we did the follo
 
 **First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
 
+#### Exploratory Data Analysis
 #### Univariate
 For univariate analysis, we looked at the distribution of all ratings, and the distribution of average rating of each distinct recipe:
 
@@ -85,6 +86,9 @@ For univariate analysis, we looked at the distribution of all ratings, and the d
 ></iframe>
 
 Most user comment left a rating of 4 stars or more. only few got 3 or less. Something interesting to notice is that there seems to be a slightly bit more of 1 star ratings than 2 star ratings. For average rating per unique recipe, most are also distributed at 5 and 4, or in-between these two. As for nutritions, the distribution of each nutrition seems to be mostly compact, with a few very extreme outliers (for example, a recipe with 30k calories compared to the common value of way less than 10k). This outliers could signify an uncommon recipe. 
+
+#### Bivariate Analysis
+For bivariate analysis, we will separately plot the trend of each nutrient vs. the average recipe rating, with avg_rating on the x-axis and nutrients on the y-axis:
 
 <iframe
   src="assets/calories.html"
@@ -135,12 +139,21 @@ Most user comment left a rating of 4 stars or more. only few got 3 or less. Some
   frameborder="0"
 ></iframe>
 
+There appears to be a little correlation between each nutrients and recipe average rating. For example, carbohydrate, protein, sugar, and calories level tends to go down as average rating of recipes geting higher and closer to 5, while other nutrients tends to go up. However, they don't really have a very visually strong correlation: taking carbohydrate level as an example, it tends to go down as rating gets higher, but there are still a lot of recipes with a rating of 4 or higher that has a high carbohydrate level.
+
+**To see the correlations clearer, we did a correlation heat map:**
+
 <iframe
   src="assets/corr_heatmap.html"
   width="800"
   height="800"
   frameborder="0"
 ></iframe>
+
+from the correlation heat map above, we can see that not really any of the nutrients have a correlation r with avg_rating that is more than + or 0.05, suggesting the correlations are not storng enough by one nutrients. However, we can see that some nutrient pairs have higher correlations. Specifically, **fat & calories**, **fat & saturated fat**, **protein & calories** all have a correlation >= 0.7. We will pair these up in aggregations and see if it changes anything.
+
+#### Intersting Aggregates
+Below shows the pivot table of average rating of each of the three highly correlated pairs mentioned above, each separated to levels 'low', 'medium', and 'high':
 
 <div style="margin-top: -50px; margin-bottom: -50px;">
     <iframe src="assets/proteinvscalories.html" width="800" height="300"></iframe>
@@ -153,6 +166,7 @@ Most user comment left a rating of 4 stars or more. only few got 3 or less. Some
 <div style="margin-top: -50px; margin-bottom: -50px;">
     <iframe src="assets/total_fatvssat_fat.html" width="800" height="300"></iframe>
 </div>
+The dark blue sections of each pivot table shows the highest average rating obtained in a certain pair combination column. It is interesting to notice that low protein and high total fat seems to obtain higher ratings, while calories and saturated fat doesn't show a much significant result of correlation with recipe rating.
 
 ## Assessment of Missingness
 We already know, for rating and avg_rating, the NaN values are ratings of 0.0, or that the user did not leave a star rating. Similarly, we suspect missingness in review and description are users not leaving a comment, and contributor not uploading a recipe description. We think it is possible that these columns are NMAR. For example, empty descriptionThese will be explored later.
