@@ -101,7 +101,7 @@ First, we will merge and edit the dataframe with the 4 steps:
 <iframe
   src="assets/corr_heatmap.html"
   width="800"
-  height="600"
+  height="800"
   frameborder="0"
 ></iframe>
 
