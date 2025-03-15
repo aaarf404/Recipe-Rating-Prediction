@@ -151,7 +151,7 @@ We will be using a standard significance level of 0.05. The test statistic will 
 <iframe
   src="assets/perm_hyp.html"
   width="800"
-  height="300"
+  height="600"
   frameborder="0"
 ></iframe>
 Since the p-value is **0.0683** (and it's always somewhere around 0.06 in the multiple times we ran the permutation test), we obtained a p-value > 0.05. Thus, we **fail to reject the null hypothesis** of "High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset)" from this permutation test. We don't have enough evidence to suggest that people rate recipes differently based on if the recipe has a higher or lower calories level.
