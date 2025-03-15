@@ -66,6 +66,13 @@ To make the two dataframes better fit our topic of exploration, we did the follo
    * There are recipes that received multiple comments/ratings, recipes that only had a few, and recipes that had none. Hence, we only keep one row per each distinct recipe, `ratings` is dropped and we shall use their `avg_rating` for further exploration. And since we are only looking at recipe ratings and nutrients for now, identification columns `user_id` and `contributor_id` will be dropped as well.
 
 **First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
+|   recipe_id |   avg_rating |   calories |   total_fat |   sugar |   sodium |   protein |   sat_fat |   carbs |
+|------------:|-------------:|-----------:|------------:|--------:|---------:|----------:|----------:|--------:|
+|      275022 |            3 |      386.1 |          34 |       7 |       24 |        41 |        62 |       8 |
+|      275024 |            3 |      377.1 |          18 |     208 |       13 |        13 |        30 |      20 |
+|      275026 |            3 |      326.6 |          30 |      12 |       27 |        37 |        51 |       5 |
+|      275030 |            5 |      577.7 |          53 |     149 |       19 |        14 |        67 |      21 |
+|      275032 |            5 |      386.9 |           0 |     347 |        0 |         1 |         0 |      33 |
 
 ### Exploratory Data Analysis
 ### Univariate
@@ -215,24 +222,25 @@ With a p-value of 0.252 > 0.05, we fail to reject the null hypothesis. We cannot
 
 
 ## Hypothesis Testing
-Despite exploring correlations, we want to test if there is a statistically significant difference between average ratings of recipes with different nutrient levels. The nutrient that we want to look at is calories.
+Many people are aware and try to control #calories they intake each day, so despite calories not showing a graphically significant correlation to recipe rating, we are still curious to test if there is a statistically significant difference between average ratings of recipes with different calories levels, or if calories doesn't actually affect ratings that much.
 
 Since the distribution of average ratings are not normal, instead skewed left with most average ratings between values of 4 to 5, we will do a permutation testing on the level of the nutrient calories and average rating of recipes.
 
-* **Null Hypothesis**: High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset).
+To do this, we found the mean calories across all recipes in `recipes_unique`, and we split the recipes into two group: high- recipes with calories >= median calorie, and low- recipes with calories < median calorie.
 
+* **Null Hypothesis**: High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset).
 * **Alternative Hypothesis**: High-calorie recipes (≥median calorie count) have different average ratings than low-calorie recipes (<median calorie count).
-* **Test Statistic**: Difference between recipe average rating of recipes with a calorie level higher than the median calories and recipes with calorie levels lower than the median calories.
+* **Test Statistic**: mean differences between recipe average rating of recipes with a calorie level higher than the median calories and recipes with calorie levels lower than the median calories.
 * **Significance Level**: 0.05
 
-We will be using a standard significance level of 0.05. The test statistic will be the difference of average ratings for high calorie recipes and the average ratings of low calorie recipes.
 <iframe
   src="assets/perm_hyp.html"
   width="800"
   height="800"
   frameborder="0"
 ></iframe>
-Since the p-value is **0.0683** (and it's always somewhere around 0.06 in the multiple times we ran the permutation test), we obtained a p-value > 0.05. Thus, we **fail to reject the null hypothesis** of "High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset)" from this permutation test. We don't have enough evidence to suggest that people rate recipes differently based on if the recipe has a higher or lower calories level.
+
+Since the p-value is **0.0683** (and it's always somewhere around 0.06 in the multiple times we ran the permutation test), we obtained a p-value > 0.05. Thus, we **fail to reject the null hypothesis** of "High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset)" from this permutation test. We don't have enough evidence to suggest that people rate recipes differently based on if the recipe has a higher or lower calories level. Despite somewhat counter-intuitive, #calories of recipes does not show affect to the ratings of recipes so far.
 
 ## Framing a Prediction Problem
 
