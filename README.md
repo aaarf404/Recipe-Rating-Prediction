@@ -270,6 +270,6 @@ To measure fairness, we use **Precision for High ratings** ("High" = 2) as the e
 ></iframe>
 
 
-After running the permutation test, we obtained an observed precision difference of 0.029, meaning the model's precision for High ratings is 2.8 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (0.029).
+After running the permutation test, we obtained an observed precision difference of 0.029, meaning the model's precision for High ratings is 2.9 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (0.029).
 
-Since p-value < 0.05, we reject the null hypothesis. This means that the difference in precision between Low-Calorie and High-Calorie recipes is statistically significant and unlikely to have occurred due to random chance. In other words, our model performs significantly worse for Low-Calorie recipes in terms of precision for predicting "High" ratings.
+Since p-value < 0.05, we **reject the null hypothesis**. This means that the difference in precision between Low-Calorie and High-Calorie recipes is statistically significant and unlikely to have occurred due to random chance. In other words, our model performs significantly worse for Low-Calorie recipes in terms of precision for predicting "High" ratings.
