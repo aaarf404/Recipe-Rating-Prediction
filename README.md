@@ -105,26 +105,21 @@ First, we will merge and edit the dataframe with the 4 steps:
   frameborder="0"
 ></iframe>
 
-<iframe
-  src="assets/proteinvscalories.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+<div style="margin-top: -50px; margin-bottom: -50px;">
+    <iframe src="assets/proteinvscalories.html" width="800" height="300"></iframe>
+</div>
 
-<iframe
-  src="assets/total_fatvscalories.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+<div style="margin-top: -50px; margin-bottom: -50px;">
+    <iframe src="assets/fatvscalories.html" width="800" height="300"></iframe>
+</div>
 
-<iframe
-  src="assets/total_fatvssat_fat.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+<div style="margin-top: -50px; margin-bottom: -50px;">
+    <iframe src="assets/total_fatvscalories.html" width="800" height="300"></iframe>
+</div>
+
+<div style="margin-top: -50px; margin-bottom: -50px;">
+    <iframe src="assets/total_fatvssat_fat.html" width="800" height="300"></iframe>
+</div>
 
 ## Assessment of Missingness
 We already know, for rating and avg_rating, the NaN values are ratings of 0.0, or that the user did not leave a star rating. Similarly, we suspect missingness in review and description are users not leaving a comment, and contributor not uploading a recipe description. We think it is possible that these columns are NMAR. For example, empty descriptionThese will be explored later.
@@ -161,7 +156,7 @@ We will be using a standard significance level of 0.05. The test statistic will 
 <iframe
   src="assets/perm_hyp.html"
   width="800"
-  height="600"
+  height="1000"
   frameborder="0"
 ></iframe>
 
