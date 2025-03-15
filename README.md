@@ -122,3 +122,10 @@ For this fairness analysis, we compare the model’s performance for two groups 
 **Significance Level**: 0.05
 
 To measure fairness, we use **Precision for High ratings** ("High" = 2) as the evaluation metric. Precision is an appropriate choice because it assesses how many recipes predicted to be High are actually High-rated, ensuring that the model is not making excessive false positive errors for one group over the other. A lower precision score for one group would indicate that the model is more prone to incorrectly assigning High ratings to that group, suggesting potential bias.
+
+<iframe
+  src="assets/permutation.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
