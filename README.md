@@ -45,6 +45,8 @@ Since the distribution of average ratings are not normal, instead skewed left wi
 * **Null Hypothesis**: High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset).
 
 * **Alternative Hypothesis**: High-calorie recipes (≥median calorie count) have different average ratings than low-calorie recipes (<median calorie count).
+* **Test Statistic**:
+* **Significance Level**:
 
 We will be using a standard significance level of 0.05. The test statistic will be the difference of average ratings for high calorie recipes and the average ratings of low calorie recipes.
 
