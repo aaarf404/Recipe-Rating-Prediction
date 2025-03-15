@@ -102,4 +102,17 @@ For the final model, a **Random Forest Classifier** was used instead of a single
 
 The final Random Forest model achieved an **overall accuracy** of 91.39%, an improvement of 3.75 percentage points over the baseline model. More importantly, the **F1-score improved significantly across all categories**, with High increasing to 0.95, Medium improving to 0.55, and Low reaching 0.42. This indicates that the model was much better at distinguishing between different rating levels, particularly for Medium and Low ratings, which were previously misclassified almost entirely. These improvements confirm that the additional features helped capture important aspects of recipe complexity, and that Random Forest’s ability to handle imbalanced data improved classification performance across all rating categories.
 
+
 ## Fairness Analysis
+
+For this fairness analysis, we compare the model’s performance for two groups based on **caloric content**. Group X (Low-Calorie Recipes) consists of recipes with calories ≤ median(calories), while Group Y (High-Calorie Recipes) includes recipes with calories > median(calories). We selected calorie content as the distinguishing factor because it plays a significant role in user preferences and ratings. Some users may rate low-calorie meals lower due to taste, while others might rate high-calorie meals lower due to health concerns. If our model exhibits bias, it could perform better at classifying one group’s ratings more accurately than the other, affecting its fairness in prediction.
+
+**Null Hypothesis**: Our model is fair. Its precision for recipes with higher calories and lower calories are roughly the same, and any differences are due to random chance.
+
+**Alternative Hypothesis**: Our model is unfair. Its precision for recipes with lower calories is lower than its precision for recipes with higher calories.
+
+**Test Statistic**: difference in precision scores for High ratings between the two groups
+
+**Significance Level**: 0.05
+
+To measure fairness, we use **Precision for High ratings** ("High" = 2) as the evaluation metric. Precision is an appropriate choice because it assesses how many recipes predicted to be High are actually High-rated, ensuring that the model is not making excessive false positive errors for one group over the other. A lower precision score for one group would indicate that the model is more prone to incorrectly assigning High ratings to that group, suggesting potential bias.
