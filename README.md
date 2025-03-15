@@ -161,7 +161,7 @@ We will be using a standard significance level of 0.05. The test statistic will 
 <iframe
   src="assets/perm_hyp.html"
   width="800"
-  height="600"
+  height="1000"
   frameborder="0"
 ></iframe>
 
