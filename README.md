@@ -28,11 +28,12 @@ The dataframe raw_recipes contains 83782 rows(each representing a unique recipe 
 #### Data Cleaning
 First, we will merge and edit the dataframe with the 4 steps:
 
-1. **Left merge recipes and ratings dataset** - this helps us to put two dataframes together for further analysis. A left merge was done to keep all the rows in raw_recipes to ensure recipes without a user rating/comment is still included.
-2. **fill all ratings of a value 0.0 with np.nan** - On food.com, star ratings range from 1 to 5. A rating value of 0.0 simply indicates that the user did not submit a star rating to that recipe, thus it should be replaced by NaN so we know it is a missing value.
-3. **Find average rating per recipe** - Many recipes across the dataframe are rated more than once. This can be seen from the fact that interactions (user rating/comment) have a lot more rows than raw_recipes(one row per unique recipe). To better explore what could affect recipe ratings and to predict rating, we will be looking at the average rating per recipe.
-4. **Add the average rating per recipe as a new column into the merged dataframe** - This steps creates an initial dataframe that we can use for our analysis
-
+1. **Left merge recipes and ratings dataset**: this helps us to put two dataframes together for further analysis. A left merge was done to keep all the rows in raw_recipes to ensure recipes without a user rating/comment is still included.
+2. **fill all ratings of a value 0.0 with np.nan**: On food.com, star ratings range from 1 to 5. A rating value of 0.0 simply indicates that the user did not submit a star rating to that recipe, thus it should be replaced by NaN so we know it is a missing value.
+3. **Find average rating per recipe**: Many recipes across the dataframe are rated more than once. This can be seen from the fact that interactions (user rating/comment) have a lot more rows than raw_recipes(one row per unique recipe). To better explore what could affect recipe ratings and to predict rating, we will be looking at the average rating per recipe.
+4. **Add the average rating per recipe as a new column into the merged dataframe**:  This steps creates an initial dataframe that we can use for our analysis
+5. **Separate the 7 nutrients from 'nutrition' each into a new column**: Since we are exploring if recipes with specific nutrition levels tend to have a higher average rating, we will further create and prepare a new dataframe from recipes_merged by separating each value in each row of the 'nutrition' column. we will also drop columns like 'review', 'n_steps', 'tags', etc. that are not related to nutrition level and user ratings.
+6. **Create a new Dataframe**: 
 
 ## Assessment of Missingness
 We already know, for rating and avg_rating, the NaN values are ratings of 0.0, or that the user did not leave a star rating. Similarly, we suspect missingness in review and description are users not leaving a comment, and contributor not uploading a recipe description. We think it is possible that these columns are NMAR. For example, empty descriptionThese will be explored later.
