@@ -60,7 +60,12 @@ To make the two dataframes better fit our topic of exploration, we did the follo
    * This steps creates an initial dataframe that we can use for our analysis
 5. **Separate the 7 nutrients from 'nutrition' each into a new column**:
    * Since we are exploring if recipes with specific nutrition levels tend to have a higher average rating, we will further create and prepare a new dataframe from recipes_merged by separating each value in each row of the 'nutrition' column. we will also drop columns like 'review', 'n_steps', 'tags', etc. that are not related to nutrition level and user ratings.
-6. **Create a new Dataframe**:
+6. **Create a new Dataframe with separated nutrient columns**:
+   * This gives us a column that contains only the 7 nutrients, identification information like `contributor_id`, `recipe_id`, and `user_id`, and `rating` & `avg_rating`.
+7. **Only leave unique recipes**:
+   * There are recipes that received multiple comments/ratings, recipes that only had a few, and recipes that had none. Hence, we only keep one row per each distinct recipe, `ratings` is dropped and we shall use their `avg_rating` for further exploration. And since we are only looking at recipe ratings and nutrients for now, identification columns `user_id` and `contributor_id` will be dropped as well.
+
+**First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
    
 <iframe
   src="assets/distrib_rating.html"
@@ -270,6 +275,6 @@ To measure fairness, we use **Precision for High ratings** ("High" = 2) as the e
 ></iframe>
 
 
-After running the permutation test, we obtained an observed precision difference of 0.029, meaning the model's precision for High ratings is 2.9 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (0.029).
+After running the permutation test, we obtained an observed precision difference of 0.029, meaning the model's precision for High ratings is 2.8 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (0.029).
 
-Since p-value < 0.05, we **reject the null hypothesis**. This means that the difference in precision between Low-Calorie and High-Calorie recipes is statistically significant and unlikely to have occurred due to random chance. In other words, our model performs significantly worse for Low-Calorie recipes in terms of precision for predicting "High" ratings.
+Since p-value < 0.05, we reject the null hypothesis. This means that the difference in precision between Low-Calorie and High-Calorie recipes is statistically significant and unlikely to have occurred due to random chance. In other words, our model performs significantly worse for Low-Calorie recipes in terms of precision for predicting "High" ratings.
