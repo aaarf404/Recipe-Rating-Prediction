@@ -218,9 +218,9 @@ To evaluate model performance, **overall accuracy and F1-score for each rating c
 
 ## Baseline Model
 
-For our baseline model, we are utilizing a decision tree classifier and split the data points into training and test sets. The model included **seven quantitative features**: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, and carbohydrates PDV. Since all features were numerical, no nominal variables required one-hot encoding. To ensure a more stable and accurate model, numerical features were standardized using StandardScaler() before training.
+For our baseline model, we are utilizing a **decision tree classifier** and split the data points into training and test sets. The model included **seven quantitative features**: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, and carbohydrates PDV. Since all features were numerical, no nominal variables required one-hot encoding. To ensure a more stable and accurate model, numerical features were standardized using **StandardScaler()** before training.
 
-The baseline model achieved an **overall accuracy** of 87.64%, but a closer look at the **F1-scores** revealed major shortcomings. The model performed well on High ratings (F1 = 0.93) but performed poorly on Medium (F1 = 0.02) and Low (F1 = 0.00). This means that while the model correctly classified most High ratings, it almost completely failed to distinguish Medium and Low ratings, likely because of severe class imbalance. As a result, while the accuracy appears high, the model is not useful for predicting lower-rated recipes, which limits its practical value.
+The baseline model achieved an **overall accuracy of 87.64%**, but a closer look at the **F1-scores** revealed major shortcomings. The model performed well on High ratings (F1 = 0.93) but performed poorly on Medium (F1 = 0.02) and Low (F1 = 0.00). This means that while the model correctly classified most High ratings, it almost completely failed to distinguish Medium and Low ratings, likely because of severe class imbalance. As a result, while the accuracy appears high, the model is not useful for predicting lower-rated recipes, which limits its practical value.
 
 
 ## Final Model
@@ -255,13 +255,13 @@ While saturated fat contributes to taste and texture, excessive amounts may lead
 
 Carbs contribute to satiety and energy content. Some users might prefer low-carb meals, while others might rate carb-heavy dishes higher based on their preferences.
 
-- "nutrient_score" (New Feature)
+- **"nutrient_score"** (New Feature)
 
 This feature balances positive and negative nutritional attributes. It is calculated as: nutrient_score = protein_PDV − (sugar_PDV + saturated_fat_PDV + sodium_PDV)/3
  
 This ensures that recipes high in protein (a desirable trait for many users) score higher, while those with excessive sugar, saturated fat, or sodium (potential health concerns) score lower. Helps measure overall recipe healthiness by rewarding protein and penalizing unhealthy ingredients like sugar, sodium, and saturated fat.
 
-- "caloric_density" (New Feature)
+- **"caloric_density"** (New Feature)
 
 This feature measures calories per unit of macronutrient content, helping to distinguish between energy-dense and nutrient-dense recipes. It is calculated as: caloric_density = calories / (carbohydrates_PDV + protein_PDV + total_fat_PDV). Helps distinguish energy-dense vs. nutrient-dense foods, which impacts user preferences.
 
