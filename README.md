@@ -47,7 +47,7 @@ By exploring the relationship of nutrition level and average rating of each dist
 
 
 ## Data Cleaning and Exploratory Data Analysis
-#### Data Cleaning
+### Data Cleaning
 To make the two dataframes better fit our topic of exploration, we did the following steps for data cleaning:
 
 1. **Left merge recipes and ratings dataset**:
@@ -67,8 +67,8 @@ To make the two dataframes better fit our topic of exploration, we did the follo
 
 **First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
 
-#### Exploratory Data Analysis
-#### Univariate
+### Exploratory Data Analysis
+### Univariate
 For univariate analysis, we looked at the distribution of all ratings, and the distribution of average rating of each distinct recipe:
 
 <iframe
@@ -87,7 +87,7 @@ For univariate analysis, we looked at the distribution of all ratings, and the d
 
 Most user comment left a rating of 4 stars or more. only few got 3 or less. Something interesting to notice is that there seems to be a slightly bit more of 1 star ratings than 2 star ratings. For average rating per unique recipe, most are also distributed at 5 and 4, or in-between these two. As for nutritions, the distribution of each nutrition seems to be mostly compact, with a few very extreme outliers (for example, a recipe with 30k calories compared to the common value of way less than 10k). This outliers could signify an uncommon recipe. 
 
-#### Bivariate Analysis
+### Bivariate
 For bivariate analysis, we will separately plot the trend of each nutrient vs. the average recipe rating, with avg_rating on the x-axis and nutrients on the y-axis:
 
 <iframe
@@ -152,8 +152,10 @@ There appears to be a little correlation between each nutrients and recipe avera
 
 from the correlation heat map above, we can see that not really any of the nutrients have a correlation r with avg_rating that is more than + or 0.05, suggesting the correlations are not storng enough by one nutrients. However, we can see that some nutrient pairs have higher correlations. Specifically, **fat & calories**, **fat & saturated fat**, **protein & calories** all have a correlation >= 0.7. We will pair these up in aggregations and see if it changes anything.
 
-#### Intersting Aggregates
+### Intersting Aggregates
 Below shows the pivot table of average rating of each of the three highly correlated pairs mentioned above, each separated to levels 'low', 'medium', and 'high':
+
+
 
 <div style="margin-top: -50px; margin-bottom: -50px;">
     <iframe src="assets/proteinvscalories.html" width="800" height="300"></iframe>
@@ -166,6 +168,8 @@ Below shows the pivot table of average rating of each of the three highly correl
 <div style="margin-top: -50px; margin-bottom: -50px;">
     <iframe src="assets/total_fatvssat_fat.html" width="800" height="300"></iframe>
 </div>
+
+
 
 
 The dark blue sections of each pivot table shows the highest average rating obtained in a certain pair combination column. It is interesting to notice that low protein and high total fat seems to obtain higher ratings, while calories and saturated fat doesn't show a much significant result of correlation with recipe rating.
