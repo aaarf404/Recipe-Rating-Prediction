@@ -66,7 +66,10 @@ To make the two dataframes better fit our topic of exploration, we did the follo
    * There are recipes that received multiple comments/ratings, recipes that only had a few, and recipes that had none. Hence, we only keep one row per each distinct recipe, `ratings` is dropped and we shall use their `avg_rating` for further exploration. And since we are only looking at recipe ratings and nutrients for now, identification columns `user_id` and `contributor_id` will be dropped as well.
 
 **First 5 rows of our final dataframe, `recipes_unique`, is shown below:**
-   
+
+#### Univariate
+For univariate analysis, we looked at the distribution of all ratings, and the distribution of average rating of each distinct recipe:
+
 <iframe
   src="assets/distrib_rating.html"
   width="800"
@@ -80,6 +83,8 @@ To make the two dataframes better fit our topic of exploration, we did the follo
   height="600"
   frameborder="0"
 ></iframe>
+
+Most user comment left a rating of 4 stars or more. only few got 3 or less. Something interesting to notice is that there seems to be a slightly bit more of 1 star ratings than 2 star ratings. For average rating per unique recipe, most are also distributed at 5 and 4, or in-between these two. As for nutritions, the distribution of each nutrition seems to be mostly compact, with a few very extreme outliers (for example, a recipe with 30k calories compared to the common value of way less than 10k). This outliers could signify an uncommon recipe. 
 
 <iframe
   src="assets/calories.html"
