@@ -8,7 +8,7 @@ This data science project conducted at UCSD explores the factors influencing rec
 
 ## Introduction
 For the project, we will be using the a subset of recipes and ratings dataset from [food.com](https://food.com). First, we will load in the two datasets and explore their features. 
-The dataframe > raw_recipes contains 83782 rows(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe), and 12 columns (features) describing each recipe. Specifically, the columns are:
+The dataframe > raw_recipes contains **83782 rows**(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe), and **12 columns** (features) describing each recipe. Specifically, the columns are:
 
 1. **'name'** (object/string)- recipe names stored as text data;
 2. **'id'** (int)- numerical representation of recipe id;
@@ -23,13 +23,13 @@ The dataframe > raw_recipes contains 83782 rows(each representing a unique recip
 11. **ingredients** (object) -list of strings each representing a needed ingredient of recipe;
 12. **n_ingredients** (int) -total number of recipe ingredients.
 
-Interactions contains a total of 731927 comments on recipes and its columns identifies features of each comment:
+Interactions contains a total of **731927 rows** of comments on recipes and its columns identifies features of each comment:
 
-1. user_id(int) - unique numerical representation for each distinct user;
-2. recipe_id - numerical representation of each distinct recipe, the same as 'id' column in raw_recipes;
-3. date(object) - date object containing the date comments are submitted;
-4. rating(int) - integer (ranging from 0 to 5) of recipe rating submitted by the user;
-5. review(object) - text data containing user reviews of recipes
+1. **'user_id'** (int) - unique numerical representation for each distinct user;
+2. **'recipe_id'** - numerical representation of each distinct recipe, the same as 'id' column in raw_recipes;
+3. **'date(object)'** - date object containing the date comments are submitted;
+4. **'rating(int)'** - integer (ranging from 0 to 5) of recipe rating submitted by the user;
+5. **'review(object)'** - text data containing user reviews of recipes
 After getting a brief overview, we brainstormed a list of questions that we are interested in for these datasets:
 
 * What type of recipes (in terms of nutrition level) tend to have higher average ratings?
