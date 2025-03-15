@@ -8,7 +8,7 @@ This data science project conducted at UCSD explores the factors influencing rec
 
 ## Introduction
 For the project, we will be using the a subset of recipes and ratings dataset from [food.com](https://food.com). First, we will load in the two datasets and explore their features. 
-The dataframe > raw_recipes contains **83782 rows**(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe), and **12 columns** (features) describing each recipe. Specifically, the columns are:
+The dataframe `raw_recipes` contains **83782 rows**(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe), and **12 columns** (features) describing each recipe. Specifically, the columns are:
 
 1. **'name'** (object/string)- recipe names stored as text data;
 2. **'id'** (int)- numerical representation of recipe id;
