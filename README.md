@@ -216,7 +216,7 @@ To measure fairness, we use **Precision for High ratings** ("High" = 2) as the e
 
 
 <iframe
-  src="assets/permutation.html"
+  src="https://aaarf404.github.io/Recipe-Rating-Prediction/assets/permutation.html"
   width="800"
   height="600"
   frameborder="0"
