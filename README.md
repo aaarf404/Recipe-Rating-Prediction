@@ -124,9 +124,15 @@ For this fairness analysis, we compare the model’s performance for two groups 
 
 To measure fairness, we use **Precision for High ratings** ("High" = 2) as the evaluation metric. Precision is an appropriate choice because it assesses how many recipes predicted to be High are actually High-rated, ensuring that the model is not making excessive false positive errors for one group over the other. A lower precision score for one group would indicate that the model is more prone to incorrectly assigning High ratings to that group, suggesting potential bias.
 
+
 <iframe
   src="assets/permutation.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+
+After running the permutation test, we obtained an observed precision difference of -0.134, meaning the model's precision for High ratings is 13.4 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (-0.134).
+
+Since p-value < 0.05, we reject the null hypothesis. This means that the difference in precision between Low-Calorie and High-Calorie recipes is statistically significant and unlikely to have occurred due to random chance. In other words, our model performs significantly worse for Low-Calorie recipes in terms of precision for predicting "High" ratings.
