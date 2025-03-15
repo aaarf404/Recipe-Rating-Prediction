@@ -23,13 +23,14 @@ The dataframe `raw_recipes` contains **83782 rows**(each representing a unique r
 11. **ingredients** (object) -list of strings each representing a needed ingredient of recipe;
 12. **n_ingredients** (int) -total number of recipe ingredients.
 
-Interactions contains a total of **731927 rows** of comments on recipes and its columns identifies features of each comment:
+`interactions` contains a total of **731927 rows** of comments on recipes and its columns identifies features of each comment:
 
 1. **'user_id'** (int) - unique numerical representation for each distinct user;
-2. **'recipe_id'** - numerical representation of each distinct recipe, the same as 'id' column in raw_recipes;
+2. **'recipe_id'** - numerical representation of each distinct recipe, the same as 'id' column in `raw_recipes`;
 3. **'date(object)'** - date object containing the date comments are submitted;
 4. **'rating(int)'** - integer (ranging from 0 to 5) of recipe rating submitted by the user;
 5. **'review(object)'** - text data containing user reviews of recipes
+   
 After getting a brief overview, we brainstormed a list of questions that we are interested in for these datasets:
 
 * What type of recipes (in terms of nutrition level) tend to have higher average ratings?
@@ -39,9 +40,9 @@ After getting a brief overview, we brainstormed a list of questions that we are 
 * Do newer recipes have higher average ratings than older recipes?
 * Do recipes with certain ingredients (like chocolate, cheese, milk) tend to have a higher average rating than others?
   
-We are interested to explore if users have preferences over, for example, healthier recipes that has a lower calorie level, or if users have preferences over sweeter recipes (higher sugar level), etc. or recipes that are less healthy. So We decided to further explore the first question: What type of recipes (in terms of nutrition level) tend to have higher average ratings?
+We are interested to explore if users have preferences over, for example, healthier recipes that has a lower calorie level, or if users have preferences over sweeter recipes (higher sugar level), etc. So We decided to further explore the first question: ***What type of recipes (in terms of nutrition level) tend to have higher average ratings?***
 
-By exploring the relationship of nutrition level and average rating of each distinct recipe, we can see if people who uses food.com have a preference over food types, flavor (eg. sweeter with higher sugar levels or less sweet), or healthy level (eg. trying to eat less calorie, or less carbohydrates). This can be important as it will assist recipe contributors to learn about what their potential audiences prefer, and what they could dislike. And knowing the current trend or people's general favors can help recipe contributors to submit more recipes that fits more people's eating habits; and eventually this can be important for food.com users as they get to see more of their preferred food types recipes.
+By exploring the relationship of nutrition level and average rating of each distinct recipe, we can see if people who uses ['food.com'](https://food.com) have a preference over food types, flavor (eg. sweeter with higher sugar levels or less sweet), or healthy level (eg. trying to eat less calorie, or less carbohydrates). This can be important our audiences, as it will assist recipe contributors to learn about what their potential audiences prefer, and what they could dislike. Knowing the current trend or people's general favors provide helpful insights for recipe contributors to submit more recipes that fits more people's eating habits; and eventually this can be important for food.com users as they get to see more of their preferred food types recipes.
 
 
 
