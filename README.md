@@ -51,49 +51,49 @@ First, we will merge and edit the dataframe with the 4 steps:
 
 <iframe
   src="assets/calories.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/total_fat.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/sugar.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/sodium.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/protein.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/sat_fat.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/carbs.html"
-  width="800"
+  width="1000"
   height="600"
   frameborder="0"
 ></iframe>
