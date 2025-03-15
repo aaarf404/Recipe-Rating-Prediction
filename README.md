@@ -38,7 +38,15 @@ First, we will merge and edit the dataframe with the 4 steps:
 
 
 ## Hypothesis Testing
+Despite exploring correlations, we want to test if there is a statistically significant difference between average ratings of recipes with different nutrient levels. The nutrient that we want to look at is calories.
 
+Since the distribution of average ratings are not normal, instead skewed left with most average ratings between values of 4 to 5, we will do a permutation testing on the level of the nutrient calories and average rating of recipes.
+
+* **Null Hypothesis**: High-calorie recipes (calorie ≥median calorie count in dataset) have the same ratings than low-calorie recipes (calories < median calorie count in dataset).
+
+* **Alternative Hypothesis**: High-calorie recipes (≥median calorie count) have different average ratings than low-calorie recipes (<median calorie count).
+
+We will be using a standard significance level of 0.05. The test statistic will be the difference of average ratings for high calorie recipes and the average ratings of low calorie recipes.
 
 ## Framing a Prediction Problem
 
