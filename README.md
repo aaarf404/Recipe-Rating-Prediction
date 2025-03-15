@@ -105,6 +105,27 @@ First, we will merge and edit the dataframe with the 4 steps:
   frameborder="0"
 ></iframe>
 
+<iframe
+  src="assets/proteinvscalories.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/total_fatvscalories.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/total_fatvssat_fat.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 ## Assessment of Missingness
 We already know, for rating and avg_rating, the NaN values are ratings of 0.0, or that the user did not leave a star rating. Similarly, we suspect missingness in review and description are users not leaving a comment, and contributor not uploading a recipe description. We think it is possible that these columns are NMAR. For example, empty descriptionThese will be explored later.
 
@@ -138,7 +159,7 @@ Since the distribution of average ratings are not normal, instead skewed left wi
 We will be using a standard significance level of 0.05. The test statistic will be the difference of average ratings for high calorie recipes and the average ratings of low calorie recipes.
 
 <iframe
-  src="assets/permutation.html"
+  src="assets/perm_hyp.html"
   width="800"
   height="600"
   frameborder="0"
