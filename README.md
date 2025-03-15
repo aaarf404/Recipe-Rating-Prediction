@@ -1,4 +1,4 @@
-# Recipe-Rating-Prediction
+# NutriRate: Predicting Recipe Ratings with Nutrition Data
 Explore factors that could affect recipe rating, and predict ratings.
 
 Authors: Fiona Zou, Ruofei(Alexandra) Mao
