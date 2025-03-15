@@ -10,26 +10,26 @@ This data science project conducted at UCSD explores the factors influencing rec
 For the project, we will be using the a subset of recipes and ratings dataset from [food.com](https://food.com). First, we will load in the two datasets and explore their features. 
 The dataframe `raw_recipes` contains **83782 rows**(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe), and **12 columns** (features) describing each recipe. Specifically, the columns are:
 
-1. **'name'** (object/string)- recipe names stored as text data;
-2. **'id'** (int)- numerical representation of recipe id;
-3. **'minutes'** (int)- number of minutes to prepare the recipe;
-4. **'contributor_id'** (int)- users' id who posted the recipe;
-5. **'submitted'** (object/date) - date the recipe was submitted;
-6. **'tags'** (object) - a list of strings representing tags for the recipe;
-7. **'nutrition'** (object) - 7 nutrition information of the recipe, including #calories, total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV) in order of appearance; PDV is the abbreviation for 'percentage of daily value'.
-8. **'n_steps'** (int) -number of steps in recipe;
-9. **'n_steps'**(objects) - in-order text data for recipe steps;
-10. **'description'** (object) -user descriptions of their recipe;
-11. **ingredients** (object) -list of strings each representing a needed ingredient of recipe;
-12. **n_ingredients** (int) -total number of recipe ingredients.
+1. **`name`** (object/string)- recipe names stored as text data;
+2. **`id`'** (int)- numerical representation of recipe id;
+3. **`minutes`** (int)- number of minutes to prepare the recipe;
+4. **`contributor_id`** (int)- users' id who posted the recipe;
+5. **`submitted`** (object/date) - date the recipe was submitted;
+6. **`tags`** (object) - a list of strings representing tags for the recipe;
+7. **`nutrition`** (object) - 7 nutrition information of the recipe, including #calories, total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV) in order of appearance; PDV is the abbreviation for 'percentage of daily value'.
+8. **`n_steps`** (int) -number of steps in recipe;
+9. **`n_steps`**(objects) - in-order text data for recipe steps;
+10. **`description`** (object) -user descriptions of their recipe;
+11. **`ingredients`** (object) -list of strings each representing a needed ingredient of recipe;
+12. **`n_ingredients`** (int) -total number of recipe ingredients.
 
 `interactions` contains a total of **731927 rows** of comments on recipes and its columns identifies features of each comment:
 
-1. **'user_id'** (int) - unique numerical representation for each distinct user;
-2. **'recipe_id'** - numerical representation of each distinct recipe, the same as 'id' column in `raw_recipes`;
-3. **'date(object)'** - date object containing the date comments are submitted;
-4. **'rating(int)'** - integer (ranging from 0 to 5) of recipe rating submitted by the user;
-5. **'review(object)'** - text data containing user reviews of recipes
+1. **`user_id`** (int) - unique numerical representation for each distinct user;
+2. **`recipe_id`** - numerical representation of each distinct recipe, the same as `id` column in `raw_recipes`;
+3. **`date`**(object) - date object containing the date comments are submitted;
+4. **`rating`**(int) - integer (ranging from 0 to 5) of recipe rating submitted by the user;
+5. **`review`**(object) - text data containing user reviews of recipes
    
 After getting a brief overview, we brainstormed a list of questions that we are interested in for these datasets:
 
@@ -48,13 +48,18 @@ By exploring the relationship of nutrition level and average rating of each dist
 
 ## Data Cleaning and Exploratory Data Analysis
 #### Data Cleaning
-First, we will merge and edit the dataframe with the 4 steps:
+To make the two dataframes better fit our topic of exploration, we did the following steps for data cleaning:
 
-1. **Left merge recipes and ratings dataset**: this helps us to put two dataframes together for further analysis. A left merge was done to keep all the rows in raw_recipes to ensure recipes without a user rating/comment is still included.
-2. **fill all ratings of a value 0.0 with np.nan**: On food.com, star ratings range from 1 to 5. A rating value of 0.0 simply indicates that the user did not submit a star rating to that recipe, thus it should be replaced by NaN so we know it is a missing value.
-3. **Find average rating per recipe**: Many recipes across the dataframe are rated more than once. This can be seen from the fact that interactions (user rating/comment) have a lot more rows than raw_recipes(one row per unique recipe). To better explore what could affect recipe ratings and to predict rating, we will be looking at the average rating per recipe.
-4. **Add the average rating per recipe as a new column into the merged dataframe**:  This steps creates an initial dataframe that we can use for our analysis
-5. **Separate the 7 nutrients from 'nutrition' each into a new column**: Since we are exploring if recipes with specific nutrition levels tend to have a higher average rating, we will further create and prepare a new dataframe from recipes_merged by separating each value in each row of the 'nutrition' column. we will also drop columns like 'review', 'n_steps', 'tags', etc. that are not related to nutrition level and user ratings.
+1. **Left merge recipes and ratings dataset**:
+   * this helps us to put two dataframes together for further analysis. A left merge was done to keep all the rows in raw_recipes to ensure recipes without a user rating/comment is still included.
+2. **fill all ratings of a value 0.0 with np.nan**:
+   * On food.com, star ratings range from 1 to 5. A rating value of 0.0 simply indicates that the user did not submit a star rating to that recipe, thus it should be replaced by NaN so we know it is a missing value.
+3. **Find average rating per recipe**:
+   * Many recipes across the dataframe are rated more than once. This can be seen from the fact that interactions (user rating/comment) have a lot more rows than raw_recipes(one row per unique recipe). To better explore what could affect recipe ratings and to predict rating, we will be looking at the average rating per recipe.
+4. **Add the average rating per recipe as a new column into the merged dataframe**:
+   * This steps creates an initial dataframe that we can use for our analysis
+5. **Separate the 7 nutrients from 'nutrition' each into a new column**:
+   * Since we are exploring if recipes with specific nutrition levels tend to have a higher average rating, we will further create and prepare a new dataframe from recipes_merged by separating each value in each row of the 'nutrition' column. we will also drop columns like 'review', 'n_steps', 'tags', etc. that are not related to nutrition level and user ratings.
 6. **Create a new Dataframe**:
    
 <iframe
