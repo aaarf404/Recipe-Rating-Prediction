@@ -174,7 +174,7 @@ The baseline model achieved an **overall accuracy** of 87.64%, but a closer look
 
 ## Final Model
 
-For the final model, we use seven numerical features, unchanged from our baseline model, that are likely to impact predicted rating: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, and carbohydrates PDV. These features were chosen because they reflect healthiness, dietary preferences, and perceived recipe quality, which can all affect user satisfaction.
+For the final model, we use nine numerical features, **with two newly engineered features**, that are likely to impact predicted rating: calories, total fat percentage daily value (PDV), sugar PDV, sodium PDV, protein PDV, saturated fat PDV, carbohydrates PDV, **nutrition score**, and **caloric density**. These features were chosen because they reflect healthiness, dietary preferences, and perceived recipe quality, which can all affect user satisfaction.
 
 - "calories"
 
@@ -204,10 +204,21 @@ While saturated fat contributes to taste and texture, excessive amounts may lead
 
 Carbs contribute to satiety and energy content. Some users might prefer low-carb meals, while others might rate carb-heavy dishes higher based on their preferences.
 
-For the final model, a **Random Forest Classifier** was used instead of a single decision tree. This change helped to reduce overfitting and improve generalization by averaging multiple decision trees trained on different subsets of the data. Additionally, **hyperparameter tuning** was performed using RandomizedSearchCV, optimizing key parameters such as number of trees (n_estimators), tree depth (max_depth), minimum samples required for splitting (min_samples_split), and minimum samples per leaf (min_samples_leaf). The final model was trained with 100 trees, a max depth of 20, min_samples_split=2, and min_samples_leaf=1, and it used class balancing (class_weight='balanced') to improve the classification of underrepresented classes.
+- "nutrient_score" (New Feature)
 
-The final Random Forest model achieved an **overall accuracy** of 91.39%, an improvement of 3.75 percentage points over the baseline model. More importantly, the **F1-score improved significantly across all categories**, with High increasing to 0.95, Medium improving to 0.55, and Low reaching 0.42. This indicates that the model was much better at distinguishing between different rating levels, particularly for Medium and Low ratings, which were previously misclassified almost entirely. These improvements confirm that the additional features helped capture important aspects of recipe complexity, and that Random Forest’s ability to handle imbalanced data improved classification performance across all rating categories.
+This feature balances positive and negative nutritional attributes. It is calculated as: nutrient_score = protein_PDV − (sugar_PDV + saturated_fat_PDV + sodium_PDV)/3
+ 
+This ensures that recipes high in protein (a desirable trait for many users) score higher, while those with excessive sugar, saturated fat, or sodium (potential health concerns) score lower. Helps measure overall recipe healthiness by rewarding protein and penalizing unhealthy ingredients like sugar, sodium, and saturated fat.
 
+- "caloric_density" (New Feature)
+
+This feature measures calories per unit of macronutrient content, helping to distinguish between energy-dense and nutrient-dense recipes. It is calculated as: caloric_density = calories / (carbohydrates_PDV + protein_PDV + total_fat_PDV). Helps distinguish energy-dense vs. nutrient-dense foods, which impacts user preferences.
+
+For the final model, a **Random Forest Classifier** was used instead of a single decision tree. This change helped to reduce overfitting and improve generalization by averaging multiple decision trees trained on different subsets of the data. Additionally, **hyperparameter tuning** was performed using RandomizedSearchCV, optimizing key parameters such as number of trees (n_estimators), tree depth (max_depth), minimum samples required for splitting (min_samples_split), and minimum samples per leaf (min_samples_leaf). The final model was trained with 200 trees, a max depth of 20, min_samples_split = 2, and min_samples_leaf = 1, and it used class balancing (class_weight='balanced') to improve the classification of underrepresented classes.
+
+The final Random Forest model achieved an overall accuracy of **93.16%**, an improvement over the baseline model. More importantly, the **F1-score improved significantly across all categories**, with High increasing to 0.96, Medium improving to 0.68, and Low reaching 0.54. This indicates that the model was much better at distinguishing between different rating levels, particularly for Medium and Low ratings, which previously had lower recall and precision. These improvements confirm that Random Forest’s ability to handle imbalanced data improved classification performance across all rating categories.
+
+The addition of nutrient_score and caloric_density contributed to these gains by helping the model better understand how nutritional factors influence user ratings. These engineered features likely captured nuances that were not as apparent in the raw nutritional values alone, reinforcing the importance of feature engineering in improving model performance.
 
 ## Fairness Analysis
 
@@ -232,6 +243,6 @@ To measure fairness, we use **Precision for High ratings** ("High" = 2) as the e
 ></iframe>
 
 
-After running the permutation test, we obtained an observed precision difference of -0.134, meaning the model's precision for High ratings is 13.4 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (-0.134).
+After running the permutation test, we obtained an observed precision difference of 0.028, meaning the model's precision for High ratings is 2.8 percentage points lower for Low-Calorie recipes compared to High-Calorie recipes. The computed p-value is 0.0, meaning that none of the 10,000 randomly shuffled precision differences were as extreme as the observed difference (0.028).
 
 Since p-value < 0.05, we reject the null hypothesis. This means that the difference in precision between Low-Calorie and High-Calorie recipes is statistically significant and unlikely to have occurred due to random chance. In other words, our model performs significantly worse for Low-Calorie recipes in terms of precision for predicting "High" ratings.
