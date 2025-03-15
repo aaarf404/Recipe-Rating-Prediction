@@ -1,13 +1,13 @@
 # Recipe-Rating-Prediction
 Explore factors that could affect recipe rating, and predict ratings.
 
-Authors: Fiona Zou, Ruofei Mao
+Authors: Fiona Zou, Ruofei(Alexandra) Mao
 
 ## Overview
-This data science project conducted at UCSD explores the factors influencing recipe ratings using a dataset from [title](https://food.com). Specifically, this project investigates how various recipe nutrients, like calories and total fat, contributes to a recipe's rating. By analyzing these features, our project aims to explore viewer preferences of nutrition levels of highly-rated recipes and develop a predictive model for recipe ratings.
+This data science project conducted at UCSD explores the factors influencing recipe ratings using a dataset from [food.com](https://food.com). Specifically, this project investigates how various recipe nutrients, like calories and total fat, contributes to a recipe's rating. By analyzing these features, our project aims to explore viewer preferences of nutrition levels of highly-rated recipes and develop a predictive model for recipe ratings.
 
 ## Introduction
-For the project, we will be using the a subset of recipes and ratings dataset from [title](https://food.com). First, we will load in the two datasets and explore their features. 
+For the project, we will be using the a subset of recipes and ratings dataset from [food.com](https://food.com). First, we will load in the two datasets and explore their features. 
 The dataframe > raw_recipes contains 83782 rows(each representing a unique recipe as indicated by the number of unique recipe IDs equals the number of total rows in this dataframe), and 12 columns (features) describing each recipe. Specifically, the columns are:
 
 1. **'name'** (object/string)- recipe names stored as text data;
@@ -22,6 +22,26 @@ The dataframe > raw_recipes contains 83782 rows(each representing a unique recip
 10. **'description'** (object) -user descriptions of their recipe;
 11. **ingredients** (object) -list of strings each representing a needed ingredient of recipe;
 12. **n_ingredients** (int) -total number of recipe ingredients.
+
+Interactions contains a total of 731927 comments on recipes and its columns identifies features of each comment:
+
+1. user_id(int) - unique numerical representation for each distinct user;
+2. recipe_id - numerical representation of each distinct recipe, the same as 'id' column in raw_recipes;
+3. date(object) - date object containing the date comments are submitted;
+4. rating(int) - integer (ranging from 0 to 5) of recipe rating submitted by the user;
+5. review(object) - text data containing user reviews of recipes
+After getting a brief overview, we brainstormed a list of questions that we are interested in for these datasets:
+
+* What type of recipes (in terms of nutrition level) tend to have higher average ratings?
+* What type of recipes (sweet or savory) tend to have higher average ratings?
+* What is the relationship between total number of ingredients and average rating of recipes?
+* Do certains users (with >= 20 comments submmited) have preferences to certain type of recipes that they tend to give higher ratings?
+* Do newer recipes have higher average ratings than older recipes?
+* Do recipes with certain ingredients (like chocolate, cheese, milk) tend to have a higher average rating than others?
+  
+We are interested to explore if users have preferences over, for example, healthier recipes that has a lower calorie level, or if users have preferences over sweeter recipes (higher sugar level), etc. or recipes that are less healthy. So We decided to further explore the first question: What type of recipes (in terms of nutrition level) tend to have higher average ratings?
+
+By exploring the relationship of nutrition level and average rating of each distinct recipe, we can see if people who uses food.com have a preference over food types, flavor (eg. sweeter with higher sugar levels or less sweet), or healthy level (eg. trying to eat less calorie, or less carbohydrates). This can be important as it will assist recipe contributors to learn about what their potential audiences prefer, and what they could dislike. And knowing the current trend or people's general favors can help recipe contributors to submit more recipes that fits more people's eating habits; and eventually this can be important for food.com users as they get to see more of their preferred food types recipes.
 
 
 
