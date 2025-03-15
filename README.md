@@ -110,10 +110,6 @@ First, we will merge and edit the dataframe with the 4 steps:
 </div>
 
 <div style="margin-top: -50px; margin-bottom: -50px;">
-    <iframe src="assets/fatvscalories.html" width="800" height="300"></iframe>
-</div>
-
-<div style="margin-top: -50px; margin-bottom: -50px;">
     <iframe src="assets/total_fatvscalories.html" width="800" height="300"></iframe>
 </div>
 
